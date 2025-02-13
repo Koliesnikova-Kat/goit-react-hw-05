@@ -1,20 +1,13 @@
-// import clsx from "clsx";
-// import css from "./App.module.css";
-import One from "../One/One";
-import props from "../../propslist.json";
+import One from "../MovieCast/MovieCast";
 
 export default function App() {
   return (
     <>
-      <One props={props} />
+      <One props={1} />
 
-      <hr />
+      <One props={2} />
 
-      <One props={props} />
-
-      <hr />
-
-      <One props={props} />
+      <One props={3} />
     </>
   );
 }

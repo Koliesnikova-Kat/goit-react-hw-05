@@ -1,13 +1,13 @@
-import css from "./One.module.css";
-import Two from "../Two/Two";
+import s from "./MovieCast.module.css";
+import Two from "../MovieReviews/MovieReviews";
 
 export default function One({ props }) {
   return (
     <>
-      <h2 className={css.header}>Список друзів</h2>
-      <ul className={css.list}>
+      <h2 className={s.header}>Список друзів</h2>
+      <ul className={s.list}>
         {props.map((prop) => (
-          <li key={prop.id} className={css.item}>
+          <li key={prop.id} className={s.item}>
             <Two
               avatar={prop.avatar}
               name={prop.name}
