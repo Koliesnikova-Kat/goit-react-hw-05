@@ -1,5 +1,5 @@
 import s from "./MovieCast.module.css";
-import Two from "../MovieReviews/MovieReviews";
+import Two from "components/MovieReviews";
 
 export default function One({ props }) {
   return (

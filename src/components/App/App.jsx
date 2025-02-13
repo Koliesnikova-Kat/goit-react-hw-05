@@ -1,4 +1,4 @@
-import One from "../MovieCast/MovieCast";
+import One from "components/MovieCast";
 
 export default function App() {
   return (
