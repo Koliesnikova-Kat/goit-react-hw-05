@@ -1,0 +1,18 @@
+.link {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+
+.active {
+  color: red;
+  text-decoration: underline;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #dcc780b8;
+}
