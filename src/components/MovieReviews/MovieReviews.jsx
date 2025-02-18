@@ -37,11 +37,9 @@ export default function MovieReviews() {
   return (
     <ul className={s.list}>
       {reviews.map(({ id, author, content }) => (
-        <li key={id}>
-          <div>
+        <li key={id} className={s.item}>
             <h3>{author || "Anonymous"}</h3>
             <p>{content}</p>
-          </div>
         </li>
       ))}
     </ul>

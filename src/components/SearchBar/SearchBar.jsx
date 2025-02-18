@@ -1,12 +1,9 @@
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
-// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function SearchBar({ handleChangeQuery, query }) {
-  // const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  // const query = searchParams.get("query") || "";
 
   const handleChange = (e) => {
     handleChangeQuery(e.target.value);
@@ -26,7 +23,6 @@ export default function SearchBar({ handleChangeQuery, query }) {
   };
 
   return (
-    <div className={s.searchbar}>
       <form className={s.form} onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
@@ -40,6 +36,5 @@ export default function SearchBar({ handleChangeQuery, query }) {
           Search
         </button>
       </form>
-    </div>
   );
 }

@@ -1,14 +1,18 @@
-.header {
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
 .list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
   list-style: none;
   padding: 0;
-  margin: 50px auto;
+  margin: 20px auto;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  max-width: calc((100% - 5 * 16px) / 6);
 }

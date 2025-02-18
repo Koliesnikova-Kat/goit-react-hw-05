@@ -1,9 +1,15 @@
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import s from "./MovieDetailsPage.module.css";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { getMovieByID } from "../../API/api";
+import { FaArrowLeft } from "react-icons/fa";
+import s from "./MovieDetailsPage.module.css";
+import clsx from "clsx";
 
 const posterBaseUrl = "https://image.tmdb.org/t/p/w500";
+
+const buildLinkClass = ({ isActive }) => {
+  return clsx(s.link, isActive && s.active);
+};
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -34,12 +40,17 @@ export default function MovieDetailsPage() {
   if (!movie) return <p>No movie found</p>;
 
   return (
-    <>
+    <div className={s.movie}>
       <Link to={goBackURL.current} className={s.back}>
+        <FaArrowLeft style={{ marginRight: "5px" }} />
         Go back
       </Link>
       <div className={s.movieCard}>
-        <img src={`${posterBaseUrl}${movie.poster_path}`} alt={movie.title} />
+        <img
+          src={`${posterBaseUrl}${movie.poster_path}`}
+          alt={movie.title}
+          className={s.poster}
+        />
         <div className={s.cardInfo}>
           <h2>
             {movie.title} ({movie.release_date.slice(0, 4)})
@@ -52,15 +63,19 @@ export default function MovieDetailsPage() {
         </div>
       </div>
       <hr />
-      <div className={s.addInfo}>
-        <p>Additional information</p>
-        <nav>
-          <Link to='cast'>Cast</Link>
-          <Link to='reviews'>Reviews</Link>
+      <div>
+        <p className={s.addInfo}>Additional information</p>
+        <nav className={s.nav}>
+          <NavLink to='cast' className={buildLinkClass}>
+            Cast
+          </NavLink>
+          <NavLink to='reviews' className={buildLinkClass}>
+            Reviews
+          </NavLink>
         </nav>
       </div>
       <hr />
       <Outlet context={{ movie }} />
-    </>
+    </div>
   );
 }

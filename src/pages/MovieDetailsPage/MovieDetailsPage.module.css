@@ -1,3 +1,46 @@
+.movie {
+  margin: 40px;
+}
+
 .back {
-  background: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #000;
+  font-size: 20px;
+}
+
+.movieCard {
+  display: flex;
+  gap: 40px;
+}
+
+.poster {
+  width: 100%;
+  max-width: calc((100% - 40px) / 2);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.addInfo {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  color: #000;
+}
+
+.active {
+  color: #f80404;
+  font-weight: 600;
 }

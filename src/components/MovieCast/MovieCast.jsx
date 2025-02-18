@@ -46,7 +46,8 @@ export default function MovieCast() {
             alt={name}
           />
           <p>{name}</p>
-          <p>Character: {character}</p>
+          <p>Character:</p>
+          <p>{character}</p>
         </li>
       ))}
     </ul>
