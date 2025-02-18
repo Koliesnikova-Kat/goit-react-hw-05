@@ -1,0 +1,37 @@
+.searchbar {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.input {
+  border-radius: 8px;
+  border: none;
+  padding: 8px 16px;
+  background-color: #edec9d;
+  font-size: 20px;
+}
+
+.btn {
+  /* display: flex; */
+  padding: 8px 24px;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #c19e44;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0.64px;
+}
+
+.btn:hover {
+  background-color: #f4b006;
+}

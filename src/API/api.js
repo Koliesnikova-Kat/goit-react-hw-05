@@ -13,7 +13,7 @@ const options = {
   },
 };
 
-export const fetchedMovies = async () => {
+export const trendingMovies = async () => {
   const response = await axios.get(
     `${BASE_URL}/trending/movie/day?language=en-US`,
     options
@@ -47,4 +47,13 @@ export const getCast = async (movieId) => {
   );
 
   return response.data;
+};
+
+export const searchedMovies = async () => {
+  const response = await axios.get(
+    `${BASE_URL}/search/movie?query=query&include_adult=false&language=en-US&page=1`,
+    options
+  );
+
+  return response.data.results;
 };
