@@ -14,8 +14,10 @@ export default function MovieReviews() {
       try {
         setLoading(true);
         const reviewData = await getReview(movieId);
+        // console.log("data:", reviewData);
         setReviews(reviewData.results);
       } catch {
+        // console.error("Error fetching reviews:", error);
         setError("Failed to fetch reviews.");
       } finally {
         setLoading(false);
@@ -23,6 +25,7 @@ export default function MovieReviews() {
     };
 
     fetchReview();
+
   }, [movieId]);
 
   if (loading) return <p>Loading...</p>;

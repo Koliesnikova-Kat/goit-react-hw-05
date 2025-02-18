@@ -1,6 +1,6 @@
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import s from "./MovieDetailsPage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMovieByID } from "../../API/api";
 
 const posterBaseUrl = "https://image.tmdb.org/t/p/w500";
@@ -10,6 +10,8 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const goBackURL = useRef(location?.state ?? "/movies");
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -33,8 +35,9 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      {/* <Link to='/movies'>Go back</Link>
-      <Outlet /> */}
+      <Link to={goBackURL.current} className={s.back}>
+        Go back
+      </Link>
       <div className={s.movieCard}>
         <img src={`${posterBaseUrl}${movie.poster_path}`} alt={movie.title} />
         <div className={s.cardInfo}>
@@ -51,14 +54,10 @@ export default function MovieDetailsPage() {
       <hr />
       <div className={s.addInfo}>
         <p>Additional information</p>
-        <ul>
-          <li>
-            <Link to='cast'>Cast</Link>
-          </li>
-          <li>
-            <Link to='reviews'>Reviews</Link>
-          </li>
-        </ul>
+        <nav>
+          <Link to='cast'>Cast</Link>
+          <Link to='reviews'>Reviews</Link>
+        </nav>
       </div>
       <hr />
       <Outlet context={{ movie }} />

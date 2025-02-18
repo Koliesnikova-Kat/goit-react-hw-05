@@ -1,16 +1,15 @@
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
-import { useState } from "react";
+// import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchBar({ onSubmit }) {
-  const [query, setQuery] = useState("");
+export default function SearchBar({ handleChangeQuery, query }) {
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  // const query = searchParams.get("query") || "";
 
   const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
-
-  const handleEnterKeyDown = (e) => {
-    e.key === "Enter" && onSubmit();
+    handleChangeQuery(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -23,8 +22,7 @@ export default function SearchBar({ onSubmit }) {
       return;
     }
 
-    onSubmit(query);
-    setQuery("");
+    navigate(`/movies?query=${query}`);
   };
 
   return (
@@ -32,11 +30,9 @@ export default function SearchBar({ onSubmit }) {
       <form className={s.form} onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
-          onKeyDown={handleEnterKeyDown}
-          value={query}
+          value={query || ""}
           type='text'
           placeholder='Search your movie'
-          autoComplete='off'
           autoFocus
           className={s.input}
         />

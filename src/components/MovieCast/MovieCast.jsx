@@ -1,4 +1,4 @@
-// import s from "./MovieCast.module.css";
+import s from "./MovieCast.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCast } from "../../API/api";
@@ -16,7 +16,7 @@ export default function MovieCast() {
       try {
         setLoading(true);
         const castData = await getCast(movieId);
-        setCast(castData.results);
+        setCast(castData.cast || []);
       } catch {
         setError("Failed to fetch cast.");
       } finally {
@@ -34,10 +34,21 @@ export default function MovieCast() {
   }
 
   return (
-    <>
-      <img src={`${photoBaseUrl}${cast.profile_path}`} alt={cast.name} />
-      <p>{cast.name}</p>
-      <p>{cast.character}</p>
-    </>
+    <ul className={s.list}>
+      {cast.map(({ id, name, character, profile_path }) => (
+        <li key={id} className={s.item}>
+          <img
+            src={
+              profile_path
+                ? `${photoBaseUrl}${profile_path}`
+                : "https://via.placeholder.com/200x300?text=No+Image"
+            }
+            alt={name}
+          />
+          <p>{name}</p>
+          <p>Character: {character}</p>
+        </li>
+      ))}
+    </ul>
   );
 }
